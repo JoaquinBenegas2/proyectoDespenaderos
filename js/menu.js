@@ -1,8 +1,3 @@
-const nav = document.querySelector(".menu");
-window.addEventListener("scroll", function(){
-    nav.classList.toggle("active", window.scrollY > 0)
-})
-
 (function(){
     const listElements = document.querySelectorAll(".menu__item--show");
     const list = document.querySelector(".menu__links");
@@ -50,4 +45,14 @@ window.addEventListener("scroll", function(){
 
     menu.addEventListener("click", ()=> list.classList.toggle("menu__links--show")); 
 })();
+
+const nav = document.querySelector(".menu");
+const subNav = document.querySelector(".menu__links")
+
+window.addEventListener("scroll", function(){
+    if(window.innerWidth > 68){
+        nav.classList.toggle("active", window.scrollY > 0)
+        subNav.classList.toggle("active", window.scrollY > 0)
+    }
+})
 
