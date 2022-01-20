@@ -1,3 +1,8 @@
+const nav = document.querySelector(".menu");
+window.addEventListener("scroll", function(){
+    nav.classList.toggle("active", window.scrollY > 0)
+})
+
 (function(){
     const listElements = document.querySelectorAll(".menu__item--show");
     const list = document.querySelector(".menu__links");
@@ -43,7 +48,6 @@
         addClick();
     }
 
-    menu.addEventListener("click", ()=> list.classList.toggle("menu__links--show"));
-
+    menu.addEventListener("click", ()=> list.classList.toggle("menu__links--show")); 
 })();
 
