@@ -1,7 +1,6 @@
 (function(){
     const listElements = document.querySelectorAll(".menu__item--show");
-    const list = document.querySelector(".menu__links");
-    const menu = document.querySelector(".menu__hamburguer");
+    const slider = document.querySelector(".slider__container");
 
     const addClick = ()=>{
         listElements.forEach(element =>{
@@ -11,7 +10,10 @@
                 element.classList.toggle("menu__item--active");
 
                 if(subMenu.clientHeight === 0){
+                    slider.classList.add("slider--active");
                     height=subMenu.scrollHeight;
+                }else{
+                    slider.classList.remove("slider--active");
                 }
 
                 subMenu.style.height = `${height}px`;
@@ -24,6 +26,7 @@
             if(element.children[1].getAttribute("style")){
                 element.children[1].removeAttribute("style");
                 element.classList.remove("menu__item--active");
+                slider.classList.remove("slider--active");
             }
         });
     }
@@ -31,9 +34,6 @@
     window.addEventListener("resize", ()=>{
         if(window.innerWidth > 768){
             deleteStyleHeight();
-            if(list.classList.contains("menu__links--show")){
-                list.classList.remove("menu__links--show");
-            }
         }else{
             addClick();
         }
@@ -43,14 +43,14 @@
         addClick();
     }
 
-    menu.addEventListener("click", ()=> list.classList.toggle("menu__links--show")); 
+    /*menu.addEventListener("click", ()=> list.classList.toggle("menu__links--show"));*/ 
 })();
 
 const nav = document.querySelector(".menu");
 const subNav = document.querySelector(".menu__links")
 
 window.addEventListener("scroll", function(){
-    if(window.innerWidth > 68){
+    if(window.innerWidth > 768){
         nav.classList.toggle("active", window.scrollY > 0)
         subNav.classList.toggle("active", window.scrollY > 0)
     }
